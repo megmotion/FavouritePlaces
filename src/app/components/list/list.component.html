@@ -1,0 +1,8 @@
+<div class='container'>
+<h1>List of Favourite Places</h1>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let place of places">
+    <h3 [routerLink]="['/place/'+place.id]">{{place.name}}</h3>
+  </li>
+</ul>
+</div>

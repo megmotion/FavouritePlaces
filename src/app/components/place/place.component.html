@@ -1,0 +1,19 @@
+<div *ngIf="place">
+<a class="back" [routerLink]="['/list']">Go back</a>
+<br>
+<h2 class="page-header">{{place.name}}</h2>
+<div class="row">
+	<div class="col-md-4">
+	</div>
+	<div  class="col-md-8">
+		<ul>
+			<li class="list-group-item">Name: {{place.name}}</li>
+			<li class="list-group-item">WWW: {{place.link}}</li>
+			<li class="list-group-item">Description: {{place.description}}</li>
+			<li class="list-group-item">Address: {{place.address}}</li>
+		</ul>
+	</div>
+	<a class="btn btn-default" href="#">Edit</a>
+	<a class="btn btn-danger" href="#">Delete</a>
+</div>
+</div>
