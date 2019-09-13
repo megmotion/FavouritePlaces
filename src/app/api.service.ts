@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,26 +12,27 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getAllPlaces(): Observable<any>{
+ getAllPlaces(): Observable<any>{
   	return this.http.get(this.baseurl + '/places/', 
   		{headers: this.httpHeaders});
   }
 
-  getOnePlace(id): Observable<any>{
+  getPlaceDetails(id): Observable<any>{
   	return this.http.get(this.baseurl + '/places/' + id + "/", 
   		{headers: this.httpHeaders});
   }
 
-  updatePlace(place): Observable<any>{
-  	const body = {name:place.name, link:place.link, address:place.address, description:place.description};
-  	return this.http.put(this.baseurl + '/places/' + place.id + "/", body,
-  		{headers: this.httpHeaders});
+  createPlace(place): Observable<any>{
+    const body = {name:place.name, link:place.link, address:place.address, description:place.description};
+    return this.http.post(this.baseurl + '/places/', body,
+      {headers: this.httpHeaders});
   }
 
-  createPlace(place): Observable<any>{
-  	const body = {name:place.name, link:place.link, address:place.address, description:place.description};
-  	return this.http.post(this.baseurl + '/places/', body,
-  		{headers: this.httpHeaders});
+  updatePlace(place): Observable<any>{
+    const body = {name:place.name, link:place.link, address:place.address, description:place.description};
+    console.log(body, place.id)
+    return this.http.put(this.baseurl + '/places/' + place.id + "/", body,
+      {headers: this.httpHeaders});
   }
 
   deletePlace(id): Observable<any>{

@@ -26,13 +26,20 @@ export class PlaceComponent implements OnInit {
     this.api.getPlaceDetails(this.id).subscribe(
       data => {
         this.place = data;
-        console.log(data)
       },
       error => {
         console.log(error);
       }
     )
-	  
+  }
+
+  onDeleteClick() {
+    this.api.deletePlace(this.id).subscribe(
+      error => {
+        console.log(error);
+      }
+    )
+  this.router.navigate(['/list']);
   }
 
 }
